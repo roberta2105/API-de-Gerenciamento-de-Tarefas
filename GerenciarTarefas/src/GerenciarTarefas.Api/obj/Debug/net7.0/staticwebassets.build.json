@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "JMlZUuwi1Cb6ryn3dK3to8gtNhpUP9AkH1M11VdV3Jw=",
+  "Source": "GerenciarTarefas.Api",
+  "BasePath": "_content/GerenciarTarefas.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
