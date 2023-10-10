@@ -1,5 +1,14 @@
 using System.Text;
+using AutoMapper;
+using GerenciarTarefas.Api.AutoMapper;
+using GerenciarTarefas.Api.Contracts.TarefaContract;
 using GerenciarTarefas.Api.Data;
+using GerenciarTarefas.Api.Domain.Models;
+using GerenciarTarefas.Api.Domain.Repository;
+using GerenciarTarefas.Api.Domain.Repository.Classes;
+using GerenciarTarefas.Api.Domain.Repository.Repositorys;
+using GerenciarTarefas.Api.Domain.Services.Classes;
+using GerenciarTarefas.Api.Domain.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -21,12 +30,29 @@ app.Run();
 static void ConfigurarInjecaoDeDependencia(WebApplicationBuilder builder)
 {
     string? connectionString = builder.Configuration.GetConnectionString("PADRAO");
+  
     builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseNpgsql(connectionString), ServiceLifetime.Transient, ServiceLifetime.Transient);
     
+    //Configura os AutoMappers
+    var config = new MapperConfiguration(cfg =>
+    {
+        cfg.AddProfile<UsuarioProfile>();
+        cfg.AddProfile<TarefaProfile>();
+    });
+
+    IMapper mapper = config.CreateMapper();
+
     builder.Services
     .AddSingleton(builder.Configuration)
-    .AddSingleton(builder.Environment);
+    .AddSingleton(builder.Environment)
+    .AddSingleton(mapper)
+
+    .AddScoped<IUsuarioRepository, UsuarioRepository>()
+    .AddScoped<IRepository<Tarefa, long>, TarefaRepository>()
+    .AddScoped<IUsuarioService, UsuarioService>()
+    .AddScoped<IService<TarefaRequestContract, TarefaResponseContract, long>, TarefaService>();
+    
 }
 
 // Configura o serviços da API.

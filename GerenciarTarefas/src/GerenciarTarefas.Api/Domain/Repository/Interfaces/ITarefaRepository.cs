@@ -6,9 +6,9 @@ using GerenciarTarefas.Api.Domain.Models;
 
 namespace GerenciarTarefas.Api.Domain.Repository.Repositorys
 {
-    public interface IUsuario : IRepository<Usuario, long>
+    public interface ITarefaRepository : IRepository<Tarefa, long>
     {
-        Task<Usuario> Obter(string Email);
+        Task<IEnumerable<Tarefa>> ObterPeloUsuario(long idUsuario);
         
     }
 

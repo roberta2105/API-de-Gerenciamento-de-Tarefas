@@ -10,7 +10,7 @@ using Mono.TextTemplating;
 
 namespace GerenciarTarefas.Api.Domain.Repository.Classes
 {
-    public class UsuarioRepository : IUsuario
+    public class UsuarioRepository : IUsuarioRepository
     {
         private readonly ApplicationContext _contexto;
 
