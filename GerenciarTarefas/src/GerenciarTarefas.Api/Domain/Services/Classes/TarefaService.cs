@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using GerenciarTarefas.Api.Contracts;
 using GerenciarTarefas.Api.Contracts.TarefaContract;
 using GerenciarTarefas.Api.Domain.Models;
 using GerenciarTarefas.Api.Domain.Repository;
@@ -15,9 +16,9 @@ namespace GerenciarTarefas.Api.Domain.Services.Classes
     public class TarefaService : IService<TarefaRequestContract, TarefaResponseContract, long>
     {
         private readonly ITarefaRepository _tarefaRepository;
-        public readonly Mapper _mapper;
+        public readonly IMapper _mapper;
 
-        public TarefaService(ITarefaRepository tarefaRepository, Mapper mapper)
+        public TarefaService(ITarefaRepository tarefaRepository, IMapper mapper)
         {
             _tarefaRepository = tarefaRepository;
             _mapper = mapper;
@@ -33,7 +34,7 @@ namespace GerenciarTarefas.Api.Domain.Services.Classes
 
         }
 
-        public async Task<TarefaResponseContract> Atualizar(TarefaRequestContract entidade, long Id, long IdUsuario)
+        public async Task<TarefaResponseContract> Atualizar(long Id, TarefaRequestContract entidade, long IdUsuario)
         {
             _ = await Obter(Id) ?? throw new Exception("Tarefa não encontrada pra atualização");
 
@@ -77,5 +78,7 @@ namespace GerenciarTarefas.Api.Domain.Services.Classes
             }
             return Tarefa;
         }
+
+
     }
 }

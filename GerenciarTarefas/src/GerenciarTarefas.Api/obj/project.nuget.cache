@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jczTo1YIzREDWdwVGDHJFYDKjxvncn/1jRavblcCZ8OlTe71Ml+1W3cPOwOv6Cfg5Ch02l5APaLP+Tezh/caOw==",
+  "dgSpecHash": "UltU1O7AmcxwgPlrrM/A7S3/VpuhR3LG3NQSv0/mZ0osSi3Led8bW9ckIguzrcJDrXjeKegWJItb/UfeoKM9Yw==",
   "success": true,
-  "projectFilePath": "C:\\C#\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\GerenciarTarefas.Api.csproj",
+  "projectFilePath": "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\GerenciarTarefas.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\RobertaMedeirosStump\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\RobertaMedeirosStump\\.nuget\\packages\\fluentvalidation\\10.4.0\\fluentvalidation.10.4.0.nupkg.sha512",

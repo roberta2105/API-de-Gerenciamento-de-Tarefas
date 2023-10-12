@@ -1,5 +1,6 @@
 using System.Text;
 using AutoMapper;
+using ControleFacil.Api.Damain.Services.Classes;
 using GerenciarTarefas.Api.AutoMapper;
 using GerenciarTarefas.Api.Contracts.TarefaContract;
 using GerenciarTarefas.Api.Data;
@@ -47,9 +48,9 @@ static void ConfigurarInjecaoDeDependencia(WebApplicationBuilder builder)
     .AddSingleton(builder.Configuration)
     .AddSingleton(builder.Environment)
     .AddSingleton(mapper)
-
+    .AddScoped<TokenService>()
     .AddScoped<IUsuarioRepository, UsuarioRepository>()
-    .AddScoped<IRepository<Tarefa, long>, TarefaRepository>()
+    .AddScoped<ITarefaRepository, TarefaRepository>()
     .AddScoped<IUsuarioService, UsuarioService>()
     .AddScoped<IService<TarefaRequestContract, TarefaResponseContract, long>, TarefaService>();
     
@@ -91,7 +92,7 @@ static void ConfigurarServices(WebApplicationBuilder builder)
             }
         });
 
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "ControleFacil.Api", Version = "v1" });   
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "GerenciarTarefas.Api", Version = "v1" });   
     });
 
     builder.Services.AddAuthentication(x =>
@@ -125,7 +126,7 @@ static void ConfigurarAplicacao(WebApplication app)
     app.UseSwagger()
         .UseSwaggerUI(c =>
         {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ControleFacil.Api v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "GerenciarTarefas.Api v1");
                 c.RoutePrefix = string.Empty;
         });
 

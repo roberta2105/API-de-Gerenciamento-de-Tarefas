@@ -10,12 +10,22 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/test/GerenciarTarefas.Test/bin/Debug/net7.0/GerenciarTarefas.Test.dll",
+            "program": "${workspaceFolder}/src/GerenciarTarefas.Api/bin/Debug/net7.0/GerenciarTarefas.Api.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/test/GerenciarTarefas.Test",
+            "cwd": "${workspaceFolder}/src/GerenciarTarefas.Api",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
         },
         {
             "name": ".NET Core Attach",

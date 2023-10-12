@@ -3119,11 +3119,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\C#\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\GerenciarTarefas.Api.csproj",
+      "projectUniqueName": "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\GerenciarTarefas.Api.csproj",
       "projectName": "GerenciarTarefas.Api",
-      "projectPath": "C:\\C#\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\GerenciarTarefas.Api.csproj",
+      "projectPath": "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\GerenciarTarefas.Api.csproj",
       "packagesPath": "C:\\Users\\RobertaMedeirosStump\\.nuget\\packages\\",
-      "outputPath": "C:\\C#\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\obj\\",
+      "outputPath": "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\RobertaMedeirosStump\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -17,9 +17,9 @@ namespace GerenciarTarefas.Api.Domain.Services.Interfaces
 
         Task<RS> Obter(I Id, I IdUsuario);
 
-        Task<RS> Adicionar(RQ entidade, I Id);
+        Task<RS> Adicionar(RQ entidade, I IdUsuario);
 
-        Task<RS> Atualizar(RQ entidade, I Id, I IdUsuario);
+        Task<RS> Atualizar(I Id, RQ entidade, I IdUsuario);
 
         Task Deletar(I Id, I IdUsuario);
     }

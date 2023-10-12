@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using ControleFacil.Api.Damain.Services.Classes;
 using GerenciarTarefas.Api.Contracts;
 using GerenciarTarefas.Api.Domain.Models;
 using GerenciarTarefas.Api.Domain.Repository.Repositorys;
@@ -21,17 +23,35 @@ namespace GerenciarTarefas.Api.Domain.Services.Classes
         //Uma injeção de dependência para mapear objetos entre
         public readonly IMapper _mapper;
 
-        // private readonly TokenService _tokenService;
+         private readonly TokenService _tokenService;
 
-        public UsuarioService(IUsuarioRepository usuarioRepository, IMapper mapper)
-        // TokenService tokenService
+        public UsuarioService(IUsuarioRepository usuarioRepository, IMapper mapper, TokenService tokenService)
+        
         {
             //Retorna os métodos de IUsuario e por injeção de dependência retorna as classes herdadas por essa classe
             _usuarioRepository = usuarioRepository;
             //Retorna uma entidade apartir de um RS e um RQ
             _mapper = mapper;
 
-            //_tokenService = tokenService;
+            _tokenService = tokenService;
+        }
+        public async Task<UsuarioLoginResponse> Autenticar(UsuarioLoginRequest usuarioLoginRequest)
+        {
+            UsuarioResponseContract usuario = await Obter(usuarioLoginRequest.Email);
+
+            var hashSenha = GerarHashSenha(usuarioLoginRequest.Senha);
+
+            if (usuario is null || usuario.Senha != hashSenha)
+            {
+                throw new AuthenticationException("Usuario ou senha inválida.");
+            }
+
+            return new UsuarioLoginResponse
+            {
+                Id = usuario.Id,
+                Email = usuario.Email,
+                Token = _tokenService.GerarToken(_mapper.Map<Usuario>(usuario))
+            };
         }
 
         public async Task<UsuarioResponseContract> Adicionar(UsuarioRequestContract entidade, long Id)
@@ -60,7 +80,7 @@ namespace GerenciarTarefas.Api.Domain.Services.Classes
             return hashSenha;
         }
 
-        public async Task<UsuarioResponseContract> Atualizar(UsuarioRequestContract entidade, long Id, long IdUsuario)
+        public async Task<UsuarioResponseContract> Atualizar(long Id, UsuarioRequestContract entidade, long IdUsuario)
         {
             _ = await Obter(Id) ?? throw new Exception("Usuário não encontrado");
 
@@ -102,5 +122,7 @@ namespace GerenciarTarefas.Api.Domain.Services.Classes
 
             return _mapper.Map<UsuarioResponseContract>(usuario);
         }
+
+  
     }
 }

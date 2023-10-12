@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\C#\\GerenciarTarefas\\test\\GerenciarTarefas.Test\\GerenciarTarefas.Test.csproj": {}
+    "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\test\\GerenciarTarefas.Test\\GerenciarTarefas.Test.csproj": {}
   },
   "projects": {
-    "C:\\C#\\GerenciarTarefas\\test\\GerenciarTarefas.Test\\GerenciarTarefas.Test.csproj": {
+    "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\GerenciarTarefas.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\C#\\GerenciarTarefas\\test\\GerenciarTarefas.Test\\GerenciarTarefas.Test.csproj",
-        "projectName": "GerenciarTarefas.Test",
-        "projectPath": "C:\\C#\\GerenciarTarefas\\test\\GerenciarTarefas.Test\\GerenciarTarefas.Test.csproj",
+        "projectUniqueName": "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\GerenciarTarefas.Api.csproj",
+        "projectName": "GerenciarTarefas.Api",
+        "projectPath": "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\GerenciarTarefas.Api.csproj",
         "packagesPath": "C:\\Users\\RobertaMedeirosStump\\.nuget\\packages\\",
-        "outputPath": "C:\\C#\\GerenciarTarefas\\test\\GerenciarTarefas.Test\\obj\\",
+        "outputPath": "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\RobertaMedeirosStump\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,6 +26,112 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[10.4.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\test\\GerenciarTarefas.Test\\GerenciarTarefas.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\test\\GerenciarTarefas.Test\\GerenciarTarefas.Test.csproj",
+        "projectName": "GerenciarTarefas.Test",
+        "projectPath": "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\test\\GerenciarTarefas.Test\\GerenciarTarefas.Test.csproj",
+        "packagesPath": "C:\\Users\\RobertaMedeirosStump\\.nuget\\packages\\",
+        "outputPath": "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\test\\GerenciarTarefas.Test\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\RobertaMedeirosStump\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\GerenciarTarefas.Api.csproj": {
+                "projectPath": "C:\\C#\\API-de-Gerenciamento-de-Tarefas\\GerenciarTarefas\\src\\GerenciarTarefas.Api\\GerenciarTarefas.Api.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

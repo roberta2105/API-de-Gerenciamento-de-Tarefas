@@ -14,7 +14,7 @@ namespace GerenciarTarefas.Api.Domain.Models
         [Required]
         public long IdUsuario { get; set; }
 
-        public Usuario? Usuario { get; set; }
+        public Usuario Usuario { get; set; }
 
         [Required(ErrorMessage = "Título obrigatório")]
         public string Titulo { get; set; } = string.Empty;

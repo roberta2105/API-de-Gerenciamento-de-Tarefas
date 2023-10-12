@@ -9,7 +9,7 @@
                 "build",
                 "${workspaceFolder}/GerenciarTarefas.sln",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary;ForceNoAlign"
+                "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },

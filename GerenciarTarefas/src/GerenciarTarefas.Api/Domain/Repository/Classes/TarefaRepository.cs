@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using GerenciarTarefas.Api.Data;
 using GerenciarTarefas.Api.Domain.Models;
+using GerenciarTarefas.Api.Domain.Repository.Repositorys;
 using Microsoft.EntityFrameworkCore;
 
 namespace GerenciarTarefas.Api.Domain.Repository.Classes
 {
-    public class TarefaRepository : IRepository<Tarefa, long>
+    public class TarefaRepository : ITarefaRepository
     {
         private readonly ApplicationContext _contexto;
 
@@ -58,6 +59,11 @@ namespace GerenciarTarefas.Api.Domain.Repository.Classes
         {
             return await _contexto.Tarefa.AsNoTracking().Where(e => e.Id == id)
             .FirstOrDefaultAsync();
+        }
+
+        public Task<IEnumerable<Tarefa>> ObterPeloUsuario(long idUsuario)
+        {
+            throw new NotImplementedException();
         }
     }
 }

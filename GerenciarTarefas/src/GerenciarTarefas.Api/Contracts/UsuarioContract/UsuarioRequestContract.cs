@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace GerenciarTarefas.Api.Contracts
 {
-    public class UsuarioRequestContract : UsuarioLoginResquest
+    public class UsuarioRequestContract : UsuarioLoginRequest
     {
         //Email e senha
-        public string Nome { get; set; } = string.Empty;
+      
 
     }
 }

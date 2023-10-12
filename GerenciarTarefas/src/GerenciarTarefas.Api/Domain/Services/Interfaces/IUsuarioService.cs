@@ -9,7 +9,7 @@ namespace GerenciarTarefas.Api.Domain.Services.Interfaces
 {
     public interface IUsuarioService : IService<UsuarioRequestContract, UsuarioResponseContract, long>
     {
-        //Task<UsuarioLoginResponse> Autenticar(UsuarioLoginRequest usuarioLoginRequest);
+        Task<UsuarioLoginResponse> Autenticar(UsuarioLoginRequest usuarioLoginRequest);
         Task<UsuarioResponseContract> Obter(string Email);
     }
 }
