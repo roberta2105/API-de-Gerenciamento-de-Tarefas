@@ -18,7 +18,7 @@ namespace GerenciarTarefas.Api.Domain.Repository.Classes
             _contexto = contexto;
         }
 
-        public async Task<Tarefa?> Adicionar(Tarefa entidade)
+        public async Task<Tarefa> Adicionar(Tarefa entidade)
         {
             await _contexto.Tarefa.AddAsync(entidade);
             await _contexto.SaveChangesAsync();
@@ -26,17 +26,17 @@ namespace GerenciarTarefas.Api.Domain.Repository.Classes
             return entidade;
         }
 
-        public async Task<Tarefa?> Atualizar(Tarefa entidade)
+        public async Task<Tarefa> Atualizar(Tarefa entidade)
         {
-            var entidadeBanco = _contexto.Tarefa.Where(e => e.Id == entidade.Id)
-            .FirstOrDefaultAsync();
+            Tarefa entidadeBanco = _contexto.Tarefa.Where(e => e.Id == entidade.Id)
+            .FirstOrDefault();
 
             _contexto.Entry(entidadeBanco).CurrentValues.SetValues(entidade);
-            _contexto.Update(entidadeBanco);
+            _contexto.Update<Tarefa>(entidadeBanco);
 
             await _contexto.SaveChangesAsync();
 
-            return await entidadeBanco;
+            return entidadeBanco;
         }
 
         public async Task Deletar(Tarefa entidade)
@@ -61,9 +61,11 @@ namespace GerenciarTarefas.Api.Domain.Repository.Classes
             .FirstOrDefaultAsync();
         }
 
-        public Task<IEnumerable<Tarefa>> ObterPeloUsuario(long idUsuario)
+        public async Task<IEnumerable<Tarefa>> ObterPeloUsuario(long IdUsuario)
         {
-            throw new NotImplementedException();
+            return await _contexto.Tarefa.AsNoTracking().Where(n => n.IdUsuario == IdUsuario)
+            .OrderBy(n => n.Id)
+            .ToListAsync();
         }
     }
 }

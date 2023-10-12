@@ -8,7 +8,7 @@ namespace GerenciarTarefas.Api.Contracts
     public class UsuarioRequestContract : UsuarioLoginRequest
     {
         //Email e senha
-      
+      public string Nome { get; set; } = string.Empty;
 
     }
 }

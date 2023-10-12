@@ -11,9 +11,9 @@ namespace GerenciarTarefas.Api.Domain.Repository
 
         Task<T?> Obter(I id);
 
-        Task<T?> Adicionar(T entidade);
+        Task<T> Adicionar(T entidade);
 
-        Task<T?> Atualizar(T entidade);
+        Task<T> Atualizar(T entidade);
 
         Task Deletar(T entidade);
     }

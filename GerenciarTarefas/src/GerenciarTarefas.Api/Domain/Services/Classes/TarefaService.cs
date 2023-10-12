@@ -24,9 +24,11 @@ namespace GerenciarTarefas.Api.Domain.Services.Classes
             _mapper = mapper;
         }
 
-        public async Task<TarefaResponseContract> Adicionar(TarefaRequestContract entidade, long Id)
+        public async Task<TarefaResponseContract> Adicionar(TarefaRequestContract entidade, long IdUsuario)
         {
             var tarefa = _mapper.Map<Tarefa>(entidade);
+
+            tarefa.IdUsuario = IdUsuario;
 
             tarefa = await _tarefaRepository.Adicionar(tarefa);
 
@@ -36,11 +38,11 @@ namespace GerenciarTarefas.Api.Domain.Services.Classes
 
         public async Task<TarefaResponseContract> Atualizar(long Id, TarefaRequestContract entidade, long IdUsuario)
         {
-            _ = await Obter(Id) ?? throw new Exception("Tarefa não encontrada pra atualização");
+            var tarefa = await ObterPorIdVinculadoAoIdUsuario(Id, IdUsuario);
 
-            var tarefa = _mapper.Map<Tarefa>(entidade);
-
-            tarefa.Id = Id;
+            tarefa.Titulo = entidade.Titulo;
+            tarefa.Descricao = entidade.Descricao;
+            tarefa.StatusTarefa = entidade.StatusTarefa;
 
             tarefa = await _tarefaRepository.Atualizar(tarefa);
 
@@ -49,9 +51,9 @@ namespace GerenciarTarefas.Api.Domain.Services.Classes
 
         public async Task Deletar(long Id, long IdUsuario)
         {
-            var tarefa = await ObterPorIdVinculadoAoIdUsuario(Id, IdUsuario) ?? throw new Exception("Tarefa não encontrada pra deleção");
+            var tarefa = await ObterPorIdVinculadoAoIdUsuario(Id, IdUsuario);
 
-            await _tarefaRepository.Deletar(_mapper.Map<Tarefa>(tarefa));
+            await _tarefaRepository.Deletar(tarefa);
         }
 
         public async Task<IEnumerable<TarefaResponseContract>> Obter(long IdUsuario)
@@ -74,7 +76,7 @@ namespace GerenciarTarefas.Api.Domain.Services.Classes
 
             if (Tarefa is null || Tarefa.IdUsuario != IdUsuario)
             {
-                throw new Exception($"Não foi encontrado nenhuma natureza de lançamento pelo id {Id}");
+                throw new Exception($"Não foi encontrado nenhuma tarefa pelo id {Id}");
             }
             return Tarefa;
         }
